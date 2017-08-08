@@ -5,12 +5,12 @@ int lerInt(char *titulo) {
 	int ret;
 	int  num;
 	do {
-		printf("%s", titulo);
+		printf(titulo);
 		fflush(stdin);		
 		ret = scanf("%d", &num);
 		fflush(stdin);
 		if(ret != 1) {
-			printf("%s", "Erro ao ler numero");
+			printf("Erro ao ler numero");
 		}
 	}while(ret != 1);
 	return num;
@@ -25,7 +25,7 @@ int lerIntLimite(char *titulo, int min, int max) {
 		num = lerInt(titulo);
 		if (num < min || num > max) {
 			sprintf(aux, "\nO numero deve estar entre %d e %d.", min, max);
-			printf("%s", aux);
+			printf(aux);
 			getch();
 		}
 	} while(num < min || num > max);
@@ -40,7 +40,7 @@ float lerFloatLimite(char *titulo, float min, float max) {
 		num = lerFloat(titulo);
 		if (num < min || num > max) {
 			sprintf(aux, "\nO numero deve estar entre %f e %f.", min, max);
-			printf("%s", aux);
+			printf(aux);
 			getchar();getchar();
 		}
 	} while(num < min || num > max);
@@ -51,12 +51,12 @@ float lerFloat(char *titulo) {
 	int ret;
 	float num;
 	do {
-		printf("%s", titulo);
+		printf(titulo);
 		fflush(stdin);
 		ret = scanf("%f", &num);
 		fflush(stdin);
 		if(ret != 1) {
-			printf("%s", "Erro ao ler numero");
+			printf("Erro ao ler numero");
 		}
 	}while(ret != 1);
 	return num;
@@ -64,19 +64,12 @@ float lerFloat(char *titulo) {
 
 void lerString(char *str, char *titulo, char*msgErro) {
 	do {
-
 		system(CLRSCR);
-		printf("%s", titulo);
+		printf(titulo);
 		fflush(stdin);
-		if(fgets(str, 30, stdin) != NULL) {
-			validaString(str);
-		} 
-		if (strlen(str) == 0){
-			system(CLRSCR);
-			printf("%s", msgErro);
-			
-		}
-	}while(strlen(str) == 0);
+		fgets(str, 30, stdin);
+		validaString(str);
+	}while(strlen(str) == 0 || str == NULL);
 }
 
 void validaString(char *str) {

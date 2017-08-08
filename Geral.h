@@ -1,9 +1,7 @@
 
 // Em sistemas Windows usar cls
 // Em sistemas Linux usar clear
-#define CLRSCR "cls"
-
-#define PAUSAR "read -n1"
+#define CLRSCR "clear"
 
 #define FALSE 0
 #define TRUE 1
@@ -14,6 +12,8 @@
 #define STRING "%s"
 
 void getch() {
-    getchar();
+    printf("\nPressione qualquer tecla para continuar...");
+    getc(stdin);
+    getc(stdin);
     fflush(stdin);
 }
