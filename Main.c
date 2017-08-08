@@ -74,16 +74,49 @@ void listar(int qtdProdutos, struct tProduto *produto) {
 }
 
 void alterar(int qtdProdutos, struct tProduto *produtos) {
-	int produto;
+	int codigo, prodExiste = FALSE;
+	struct tProduto *produto;
 	printf("Alterando dados...");
-	listar(qtdProdutos, produtos);	
 	if(qtdProdutos > 0) {
-		produto = lerInt("\nSelecione um produto por seu código\n");
+		do {
+			listar(qtdProdutos, produtos);	
+			codigo = lerInt("Selecione um produto por seu codigo: ");
+			prodExiste = validaCodigo(qtdProdutos, codigo, produtos);
+			if(prodExiste == TRUE) {
+				produto = pesquisar(qtdProdutos, codigo, produtos);
+				alteraDados(produto);
+			} else {
+				printf("O produto selecionado nao existe\nTente novamente\n");
+				getch();				
+			}
+		} while(prodExiste == FALSE);
+		
+		
+	} else {
+		system(CLRSCR);
+		printf("Nao ha produtos cadastrados");
 	}
-
 }
 
-// Retorna TRUE se encontrar - Retorna FALSE se não encontrar
+void alteraProduto(struct tProduto *produto) {
+	
+}
+
+struct tProduto *pesquisar(int qtdProdutos, int codigo, struct tProduto *produtos) {
+	int i;
+	struct tProduto *produto;
+	for(i = 0; i < qtdProdutos; i++) {
+		if(codigo == produtos[i].codigo) {
+			produto->codigo = produtos[i].codigo;
+			strcpy(produto->descricao, produtos[i].descricao);
+			produto->preco = produtos[i].preco;
+			return produto;
+		}
+	}
+	return NULL;
+}
+
+// Retorna TRUE se encontrar - Retorna FALSE se nao encontrar
 int validaCodigo(int qtdProdutos, int codigo, struct tProduto *produtos) {
 	int i;
 	system(CLRSCR);

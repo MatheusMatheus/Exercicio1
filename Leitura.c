@@ -8,6 +8,7 @@ int lerInt(char *titulo) {
 		printf("%s", titulo);
 		fflush(stdin);		
 		ret = scanf("%d", &num);
+		fflush(stdin);
 		if(ret != 1) {
 			printf("%s", "Erro ao ler numero");
 		}

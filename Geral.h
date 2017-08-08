@@ -1,7 +1,7 @@
 
 // Em sistemas Windows usar cls
 // Em sistemas Linux usar clear
-#define CLRSCR "clear"
+#define CLRSCR "cls"
 
 #define PAUSAR "read -n1"
 
@@ -15,5 +15,5 @@
 
 void getch() {
     getchar();
-    getchar();
+    fflush(stdin);
 }
