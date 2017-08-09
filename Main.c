@@ -8,21 +8,28 @@
 #include "Leitura.c"
 #include "DAO.c"
 
-#define TAMANHO 20
+#define TAMANHO 3
 
 int main(void){
-	int opcao, qtdProduto = 0;
-	char titulo[50];
-	
 	struct tProduto produtos[TAMANHO];
+	struct tProduto produto;
+	int opcao;
+	int qtdProduto = 0;
+	char titulo[50];
+
 	do {
 		system(CLRSCR);
-		sprintf(titulo, "\n%s\n%s\n%s\n%s\n%s\n%s: ", "1 - Incluir", "2 - Listar", "3 - Alterar", "4 - Pesquisar", "5 - Sair", "Opcao");
-		opcao = lerIntLimite(titulo, 1, 5);		
+		sprintf(titulo, "\n%s\n%s\n%s\n%s\n%s\n%s\n%s: ", "1 - Incluir", "2 - Listar", "3 - Alterar", "4 - Pesquisar", "5 - Excluir", "6 - Sair", "Opcao");
+		opcao = lerIntLimite(titulo, 1, 6);		
 		
 		switch(opcao) {
 			case 1:
-				incluir(qtdProduto++, produtos);
+				if (qtdProduto < TAMANHO)
+					incluir(qtdProduto++, produtos);
+				else {
+					printf("Nao e possivel inserir mais produtos");
+					getch();
+				}
 				break;
 				
 			case 2:
@@ -35,16 +42,19 @@ int main(void){
 				break;
 			
 			case 4:
-				pesquisarCodigo(qtdProduto, produtos);
-				break;
-
-			case 5:
-				printf("Programa finalizado!\n");
+				produto = pesquisarProduto(qtdProduto, produtos);
+				if(qtdProduto > 0)
+					mostrarProduto(&produto);
 				break;
 				
-			default:
-				printf("\n\nOpcao invalida, escolha novamente");
-				getch();
+			case 5:
+				if(excluir(qtdProduto, produtos) == TRUE)
+					qtdProduto--;
+				break;
+
+			case 6:
+				printf("Programa finalizado!\n");
+				break;
 		}
-	} while (opcao != 5 && qtdProduto < TAMANHO);
+	} while (opcao != 6);
 }

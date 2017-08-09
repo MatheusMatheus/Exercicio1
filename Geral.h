@@ -1,7 +1,7 @@
 
 // Em sistemas Windows usar cls
 // Em sistemas Linux usar clear
-#define CLRSCR "clear"
+#define CLRSCR "cls"
 
 #define FALSE 0
 #define TRUE 1

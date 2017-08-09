@@ -10,6 +10,7 @@ int lerInt(char *titulo) {
 		ret = scanf("%d", &num);
 		fflush(stdin);
 		if(ret != 1) {
+			system(CLRSCR);
 			printf("Erro ao ler numero");
 		}
 	}while(ret != 1);
@@ -56,6 +57,7 @@ float lerFloat(char *titulo) {
 		ret = scanf("%f", &num);
 		fflush(stdin);
 		if(ret != 1) {
+			system(CLRSCR);
 			printf("Erro ao ler numero");
 		}
 	}while(ret != 1);
