@@ -1,3 +1,7 @@
+// Síntese: Implementação de programa de computador que realize um CRUD. 
+// Autor  : Matheus dos Santos Rodrigues
+// Data   : 08/08/2017
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,7 +12,7 @@
 #include "Leitura.c"
 #include "DAO.c"
 
-#define TAMANHO 3
+#define TAMANHO 20
 
 int main(void){
 	struct tProduto produtos[TAMANHO];
